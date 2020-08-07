@@ -1,0 +1,11 @@
+
+spring:
+  datasource:
+    name: demo1  #数据库名
+    url: jdbc:mysql://localhost:3306/demo1?useUnicode=true&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC&characterEncoding=utf8 #url
+    username: root  #用户名
+    password: root  #密码
+    driver-class-name: com.mysql.cj.jdbc.Driver  #数据库链接驱动
+
+  thymeleaf:
+    cache: false
