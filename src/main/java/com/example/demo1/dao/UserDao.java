@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public interface UserDao {
 
 
-    @Select("select * from user where name=#{name} and password = #{password}")
+    @Select("select * from user where name=#{name}")
     UserBean login(UserBean user);
 
     @Insert("insert into user(name, password) values(#{name}, #{password})")

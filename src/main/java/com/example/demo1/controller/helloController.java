@@ -31,7 +31,7 @@ public class helloController {
         System.out.println("login");
         UserBean flag=userService.login(user);
         System.out.println("user:     "+ user.toString());
-        //System.out.println("user:     "+ flag.toString());
+        System.out.println("flag:     "+ flag.toString());
         if(flag!=null)
         {
             System.out.println(true);
@@ -47,7 +47,7 @@ public class helloController {
     //TODO  ajax 直接返回页面冲突?
 
 
-
+    @ResponseBody
     @GetMapping("/add")
 
     public String add(String name,String password) {
