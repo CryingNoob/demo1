@@ -1,6 +1,6 @@
 package com.example.demo1.serviceImpl;
 
-import com.example.demo1.bean.UserBean;
+import com.example.demo1.bean.User;
 import com.example.demo1.dao.UserDao;
 import com.example.demo1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +11,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userdao;
 
-    public UserBean login(UserBean user){
+    @Override
+    public User login(User user){
+
         return userdao.login(user);
     }
 
-    public void add(UserBean userBean) {
-        userdao.insert(userBean);
+    public int register(User user) {
+        return userdao.register(user);
     }
 }

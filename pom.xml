@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>demo1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo1</name>
+    <userName>demo1</userName>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -64,6 +64,14 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!--devtools热部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>true</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -72,6 +80,8 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+
         </plugins>
     </build>
 

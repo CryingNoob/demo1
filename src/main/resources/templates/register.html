@@ -7,32 +7,34 @@
 </head>
 
 <body>
-hello , 这是我自己做的springboot的第一个界面11
+hello , 注册
 <!--<form method="post" action="http://localhost:8080/post">-->
 
-用户名<input type="text" placeholder="aaa" name="name" value="aaa"> <br>
-mima<input type="password" name="password" value="bbb">
+用户名<input type="text" placeholder="aaa" userName="userName" value="aaa"> <br>
+mima<input type="userPassword" userName="userPassword" value="bbb">
 <button onclick=sub1()> submit</button>
 <p class="xxx" id="aaa">xxxx</p>
 <script>
     function sub1() {
         console.log("123");
         var user= {
-                'name':$("[name='name']").val(),
-                'password':$("[name='password']").val()
-                // 'name': 'xxx',
-                // 'password': 'ppp'
+                'userName':$("[userName='userName']").val(),
+                'userPassword':$("[userName='userPassword']").val()
+                // 'userName': 'xxx',
+                // 'userPassword': 'ppp'
             };
+        console.log(user);
         $.ajax(
             {
-                url: "http://localhost:8080/post",
+
+                url: "/add",
                 type: "post",
                 data:JSON.stringify(user),
                 dataType: 'json',
                 contentType:"application/json",
                 success: function (data) {
                     console.log("data", data);
-                    $('#aaa').text("name : " + data.name+ "  password:" +data.password);
+                    $('#aaa').text("userName : " + data.userName+ "  userPassword:" +data.userPassword);
                 }
         });
     }

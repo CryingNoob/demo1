@@ -1,11 +1,23 @@
 
 spring:
   datasource:
-    name: demo1  #数据库名
-    url: jdbc:mysql://localhost:3306/demo1?useUnicode=true&useJDBCCompliantTimezoneShift=true&serverTimezone=UTC&characterEncoding=utf8 #url
+    name: ascyncommunity  #数据库名
+    url: jdbc:mysql://localhost:3306/ascyncommunity?useUnicode=true&useJDBCCompliantTimezoneShift=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8 #url
     username: root  #用户名
     password: root  #密码
     driver-class-name: com.mysql.cj.jdbc.Driver  #数据库链接驱动
 
   thymeleaf:
     cache: false
+  freemarker:
+    cache: false
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: WEB-INF/**
+
+#mybatis配置
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

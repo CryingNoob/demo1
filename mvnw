@@ -50,7 +50,7 @@ fi
 cygwin=false;
 darwin=false;
 mingw=false
-case "`uname`" in
+case "`uuserName`" in
   CYGWIN*) cygwin=true ;;
   MINGW*) mingw=true;;
   Darwin*) darwin=true
@@ -83,13 +83,13 @@ if [ -z "$M2_HOME" ] ; then
     if expr "$link" : '/.*' > /dev/null; then
       PRG="$link"
     else
-      PRG="`dirname "$PRG"`/$link"
+      PRG="`diruserName "$PRG"`/$link"
     fi
   done
 
   saveddir=`pwd`
 
-  M2_HOME=`dirname "$PRG"`/..
+  M2_HOME=`diruserName "$PRG"`/..
 
   # make it fully qualified
   M2_HOME=`cd "$M2_HOME" && pwd`
@@ -123,12 +123,12 @@ if [ -z "$JAVA_HOME" ]; then
     readLink=`which readlink`
     if [ ! `expr "$readLink" : '\([^ ]*\)'` = "no" ]; then
       if $darwin ; then
-        javaHome="`dirname \"$javaExecutable\"`"
+        javaHome="`diruserName \"$javaExecutable\"`"
         javaExecutable="`cd \"$javaHome\" && pwd -P`/javac"
       else
         javaExecutable="`readlink -f \"$javaExecutable\"`"
       fi
-      javaHome="`dirname \"$javaExecutable\"`"
+      javaHome="`diruserName \"$javaExecutable\"`"
       javaHome=`expr "$javaHome" : '\(.*\)/bin'`
       JAVA_HOME="$javaHome"
       export JAVA_HOME
@@ -232,19 +232,19 @@ else
         if [ "$MVNW_VERBOSE" = true ]; then
           echo "Found wget ... using wget"
         fi
-        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
+        if [ -z "$MVNW_USERuserName" ] || [ -z "$MVNW_userPassword" ]; then
             wget "$jarUrl" -O "$wrapperJarPath"
         else
-            wget --http-user=$MVNW_USERNAME --http-password=$MVNW_PASSWORD "$jarUrl" -O "$wrapperJarPath"
+            wget --http-user=$MVNW_USERuserName --http-userPassword=$MVNW_userPassword "$jarUrl" -O "$wrapperJarPath"
         fi
     elif command -v curl > /dev/null; then
         if [ "$MVNW_VERBOSE" = true ]; then
           echo "Found curl ... using curl"
         fi
-        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
+        if [ -z "$MVNW_USERuserName" ] || [ -z "$MVNW_userPassword" ]; then
             curl -o "$wrapperJarPath" "$jarUrl" -f
         else
-            curl --user $MVNW_USERNAME:$MVNW_PASSWORD -o "$wrapperJarPath" "$jarUrl" -f
+            curl --user $MVNW_USERuserName:$MVNW_userPassword -o "$wrapperJarPath" "$jarUrl" -f
         fi
 
     else

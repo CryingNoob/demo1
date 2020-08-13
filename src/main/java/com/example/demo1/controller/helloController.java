@@ -1,14 +1,10 @@
 package com.example.demo1.controller;
 
-import com.example.demo1.bean.UserBean;
+import com.example.demo1.bean.User;
 import com.example.demo1.service.UserService;
-import com.example.demo1.serviceImpl.UserServiceImpl;
-import org.apache.ibatis.type.NStringTypeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class helloController {
@@ -16,60 +12,53 @@ public class helloController {
     @Autowired
     UserService userService;
 
+    //登录
 
-    @RequestMapping("/loginPost")
+    @RequestMapping("/login")
     public String loginPost(){
-
         return "login";
     }
+    @ResponseBody
+    @PostMapping("/loginC")
+    public String login(@RequestBody User user){
 
-    @RequestMapping("/loginc")
-    public String login(@RequestParam("name") String name,@RequestParam("password") String password){
-        UserBean user= new UserBean();
-        user.setPassword(password);
-        user.setName(name);
-        System.out.println("login");
-        UserBean flag=userService.login(user);
-        System.out.println("user:     "+ user.toString());
-        System.out.println("flag:     "+ flag.toString());
-        if(flag!=null)
-        {
-            System.out.println(true);
-            return  "user";
+        System.out.println("loginc");
+        System.out.println(user);
+    try {
+        User flag = userService.login(user);
+        System.out.println(flag==null);
+        System.out.println("flag:     " + flag.toString());
+        System.out.println(true);
+
+    } catch (Exception e){
+        System.out.println("数据库");
+        e.printStackTrace();
+    }
+
+        return "登陆成功";
+    }
+
+//注册
+    @ResponseBody
+    @PostMapping("/registerC")
+    public String add( @RequestBody User user) {
+        System.out.println(user.toString());
+        int insertFlag =0;
+        try {
+            insertFlag = userService.register(user);
+
+            System.out.println(insertFlag);
+            System.out.println("插入成功");
+        } catch (Exception e){
+            System.out.println("插入错误");
+            e.printStackTrace();
+
         }
-
-        else {
-
-          System.out.println(false);
-            return "error";
+        return "注册" + user.toString() + "  " + insertFlag;
     }
-    }
-    //TODO  ajax 直接返回页面冲突?
-
-
-    @ResponseBody
-    @GetMapping("/add")
-
-    public String add(String name,String password) {
-        System.out.println("add");
-        UserBean userBean = new UserBean();
-        userBean.setName(name);
-        userBean.setPassword(password);
-        userBean.setId(1);
-        userService.add(userBean);
-        return "nice " + name + " "+ password;
+    @RequestMapping("/register")
+    public  String ind() {
+        return "register";
     }
 
-    @RequestMapping("/")
-    public  String ind(){
-        return "ind2ex";
-
-    }
-    @ResponseBody
-    @RequestMapping(value = "/post",method = RequestMethod.POST)
-    public UserBean json(@RequestBody UserBean data) {
-        System.out.println("post");
-        System.out.println("data, "+data.toString());
-        return  data;
-    }
 }

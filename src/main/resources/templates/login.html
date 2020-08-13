@@ -2,19 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>hello</title>
     <script src="https://www.jq22.com/jquery/jquery-3.3.1.js"></script>
 </head>
+
 <body>
+hello , 登录11
+<!--<form method="post" action="http://localhost:8080/post">-->
 
-<from method="POST" action="http://localhost:8080/loginc">
+用户名<input type="text" placeholder="aaa" userName="userName" value="aaa"> <br>
+mima<input type="userPassword" userName="userPassword" value="bbb">
+<button onclick=sub1()> submit</button>
+<p class="xxx" id="aaa">xxxx</p>
+<script>
+    function sub1() {
+        console.log("123");
+        var user= {
+            'userName':$("[userName='userName']").val(),
+            'userPassword':$("[userName='userPassword']").val()
+            // 'userName': 'xxx',
+            // 'userPassword': 'ppp'
+        };
+        console.log(user);
+        $.ajax(
+            {
 
-    用户名<input id="name" name="name" >
-    密码  <input id="password" name="password">
-    <button type="submit"> 登录 </button>
-</from>
+                url: "/loginc",
+                type: "post",
+                data:JSON.stringify(user),
+                dataType: 'json',
+                contentType:"application/json",
+                success: function (data) {
+                    console.log("data", data);
+                    $('#aaa').text("userName : " + data.userName+ "  userPassword:" +data.userPassword);
+                }
+            });
+    }
 
 
+</script>
+
+<!--</form>-->
 
 </body>
 </html>
