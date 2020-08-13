@@ -6,14 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class helloController {
 
     @Autowired
     UserService userService;
 
     //登录
-
     @RequestMapping("/login")
     public String loginPost(){
         return "login";
@@ -26,19 +25,25 @@ public class helloController {
         System.out.println(user);
     try {
         User flag = userService.login(user);
-        System.out.println(flag==null);
-        System.out.println("flag:     " + flag.toString());
-        System.out.println(true);
+        if(flag !=null)
+        {
+            System.out.println("flag:     " + flag.toString());
+            System.out.println("登陆成功");
+        }
+        else
+        {
+            System.out.println("登陆失败");
+        }
 
     } catch (Exception e){
-        System.out.println("数据库");
+        System.out.println("数据库查询错误 at controller : login");
         e.printStackTrace();
     }
 
         return "登陆成功";
     }
 
-//注册
+    //注册
     @ResponseBody
     @PostMapping("/registerC")
     public String add( @RequestBody User user) {
@@ -61,4 +66,10 @@ public class helloController {
         return "register";
     }
 
+    //Question
+    @PostMapping("/question")
+    public String question(){
+
+        return "a";
+    }
 }

@@ -27,7 +27,7 @@ mima<input type="userPassword" userName="userPassword" value="bbb">
         $.ajax(
             {
 
-                url: "/loginc",
+                url: "/loginC",
                 type: "post",
                 data:JSON.stringify(user),
                 dataType: 'json',
@@ -35,6 +35,7 @@ mima<input type="userPassword" userName="userPassword" value="bbb">
                 success: function (data) {
                     console.log("data", data);
                     $('#aaa').text("userName : " + data.userName+ "  userPassword:" +data.userPassword);
+
                 }
             });
     }
