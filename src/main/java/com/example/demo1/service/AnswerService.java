@@ -1,5 +1,7 @@
 package com.example.demo1.service;
 
-public interface AnswerService {
+import com.example.demo1.bean.Answer;
 
+public interface AnswerService {
+    Answer getAnswer();
 }

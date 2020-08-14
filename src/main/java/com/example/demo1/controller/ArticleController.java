@@ -64,10 +64,8 @@ public class ArticleController {
                 System.out.println(articleList.toString());
 
             }
-
         }catch ( Exception e){
             e.printStackTrace();
-
             return "error";
         }
         return articleList.toString();
