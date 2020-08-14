@@ -6,11 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-public class helloController {
+@Controller
+public class UserController {
 
+//    @Autowired
+//    UserService userService;
+    private  UserService userService;
     @Autowired
-    UserService userService;
+    public  void setUserService(UserService userService){
+        this.userService = userService;
+    }
 
     //登录
     @RequestMapping("/login")
@@ -21,8 +26,6 @@ public class helloController {
     @PostMapping("/loginC")
     public String login(@RequestBody User user){
 
-        System.out.println("loginc");
-        System.out.println(user);
     try {
         User flag = userService.login(user);
         if(flag !=null)
@@ -41,6 +44,24 @@ public class helloController {
     }
 
         return "登陆成功";
+    }
+
+    //登录
+
+    @GetMapping("user/signin")
+    public User loginGet(String name,String password){
+        User user=new User();
+        user.setUserName(name);
+        user.setUserPassword(password);
+        User reUser = null;
+        try{
+
+           reUser= userService.login(user);
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("登录 get error");
+        }
+     return reUser;
     }
 
     //注册

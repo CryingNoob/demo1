@@ -1,5 +1,7 @@
 package com.example.demo1.bean;
 
+import java.util.List;
+
 public class Article {
 
     @Override
@@ -18,6 +20,52 @@ public class Article {
 
     int articleId,articleAuthorId,likeNumber,collectNumber,commentNumber;
     String articleTitle,articleContent,articleDate;
+
+    List<Tag> article_tags;
+    User article_author;
+    List<User> like_users,collect_user;
+    List<Comment> comment_content;
+
+    public List<Tag> getArticle_tags() {
+        return article_tags;
+    }
+
+    public void setArticle_tags(List<Tag> article_tags) {
+        this.article_tags = article_tags;
+    }
+
+    public User getArticle_author() {
+        return article_author;
+    }
+
+    public void setArticle_author(User article_author) {
+        this.article_author = article_author;
+    }
+
+    public List<User> getLike_users() {
+        return like_users;
+    }
+
+    public void setLike_users(List<User> like_users) {
+        this.like_users = like_users;
+    }
+
+    public List<User> getCollect_user() {
+        return collect_user;
+    }
+
+    public void setCollect_user(List<User> collect_user) {
+        this.collect_user = collect_user;
+    }
+
+    public List<Comment> getComment_content() {
+        return comment_content;
+    }
+
+    public void setComment_content(List<Comment> comment_content) {
+        this.comment_content = comment_content;
+    }
+
     public int getArticleId() {
         return articleId;
     }

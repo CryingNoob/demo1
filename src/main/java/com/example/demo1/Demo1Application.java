@@ -13,6 +13,8 @@ public class Demo1Application {
         System.out.println("\n\ndemo1 is run at http://localhost:8080 \n");
         System.out.println("login is run at http://localhost:8080/login \n");
         System.out.println("register is run at http://localhost:8080/register \n\n");
+        System.out.println("register is run at http://localhost:8080/getAllArticle \n\n");
+
 
     }
 
