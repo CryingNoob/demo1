@@ -99,7 +99,7 @@ public class ArticleController {
 
 
     @GetMapping("/article/getAllArticles")
-    public String getAllArticle(){
+    public List<Article> getAllArticle(){
         ArrayList<Article> articleList;
         List<Tag> article_tags=new ArrayList<>();
         User article_author=new User();
@@ -109,33 +109,33 @@ public class ArticleController {
             articleList = new ArrayList<>(articleService.getAllArticle());
 
             if (articleList==null)
-                return  "null";
+                return  null;
             else
             {
 
                 for (Article a :articleList) {
 
-                    a.setArticle_author(userService.getUser(a.getArticleId()));
-                    List<ArticleTag> articleTagList=articleTagService.getArticleTag(a.getArticleId());
+                    a.setArticle_author(userService.getUser(a.getid()));
+                    List<ArticleTag> articleTagList=articleTagService.getArticleTag(a.getid());
 
                     for(ArticleTag articleTagI:articleTagList){
                         article_tags.add(tagService.getTag(articleTagI.getTagId()));
                     }
-                    a.setArticle_tags(article_tags);
+                    a.setArticle_tag(article_tags);
 
-                    List<Like> likeList=likeService.getLike(a.getArticleId());
+                    List<Like> likeList=likeService.getLike(a.getid());
                     for(Like like:likeList){
                         like_users.add(userService.getUser(like.getUserId()));
                     }
                     a.setLike_users(like_users);
 
-                    List<Collect> collectList = collectService.getCollect(a.getArticleId());
+                    List<Collect> collectList = collectService.getCollect(a.getid());
                     for(Collect collect:collectList){
                         collect_users.add(userService.getUser(collect.getUserId()));
                     }
                     a.setCollect_user(collect_users);
 
-                    comment_content = commentService.getComment(a.getArticleId());
+                    comment_content = commentService.getComment(a.getid());
                     a.setComment_content(comment_content);
 
                 }
@@ -144,8 +144,8 @@ public class ArticleController {
             }
         }catch ( Exception e){
             e.printStackTrace();
-            return "error";
+            return null;
         }
-        return articleList.toString();
+        return articleList;
     }
 }

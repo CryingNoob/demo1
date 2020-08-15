@@ -7,12 +7,12 @@ public class Article {
 
 
 
-    int articleId,articleAuthorId,likeNumber,collectNumber,commentNumber;
+    int id,articleAuthorId,likeNumber,collectNumber,commentNumber;
     String articleTitle;
     String articleContent;
     String articleDate;
 
-    List<Tag> article_tags;
+    List<Tag> article_tag;
     User article_author;
     List<User> like_users,collect_user;
     List<Comment> comment_content;
@@ -20,7 +20,7 @@ public class Article {
     @Override
     public String toString() {
         return "Article{" +
-                "articleId=" + articleId +
+                "id=" + id +
                 ", articleAuthorId=" + articleAuthorId +
                 ", likeNumber=" + likeNumber +
                 ", collectNumber=" + collectNumber +
@@ -28,7 +28,7 @@ public class Article {
                 ", articleTitle='" + articleTitle + '\'' +
                 ", articleContent='" + articleContent + '\'' +
                 ", articleDate='" + articleDate + '\'' +
-                ", article_tags=" + article_tags.toString() +
+                ", article_tag=" + article_tag.toString() +
                 ", article_author=" + article_author.toString() +
                 ", like_users=" + like_users.toString() +
                 ", collect_user=" + collect_user.toString() +
@@ -36,12 +36,12 @@ public class Article {
                 '}';
     }
 
-    public List<Tag> getArticle_tags() {
-        return article_tags;
+    public List<Tag> getArticle_tag() {
+        return article_tag;
     }
 
-    public void setArticle_tags(List<Tag> article_tags) {
-        this.article_tags = article_tags;
+    public void setArticle_tag(List<Tag> article_tag) {
+        this.article_tag = article_tag;
     }
 
     public User getArticle_author() {
@@ -76,12 +76,12 @@ public class Article {
         this.comment_content = comment_content;
     }
 
-    public int getArticleId() {
-        return articleId;
+    public int getid() {
+        return id;
     }
 
-    public void setArticleId(int articleId) {
-        this.articleId = articleId;
+    public void setid(int id) {
+        this.id = id;
     }
 
     public int getArticleAuthorId() {
