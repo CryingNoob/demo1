@@ -9,5 +9,5 @@ import java.util.List;
 @Service
 public interface CollectDao {
     @Select("select * from Like_and_Collect where Article_id =#{articleId} and Like_or_collect  =1")
-    List<Collect> getAllCollect( int articleId);
+    List<Collect> getCollect( int articleId);
 }

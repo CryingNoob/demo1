@@ -1,6 +1,9 @@
 package com.example.demo1.bean;
 
 public class ArticleTag {
+    int id;
+    int articleId;
+
     public int getId() {
         return id;
     }
@@ -9,54 +12,24 @@ public class ArticleTag {
         this.id = id;
     }
 
-    public int getHtml() {
-        return html;
+    public int getArticleId() {
+        return articleId;
     }
 
-    public void setHtml(int html) {
-        this.html = html;
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
     }
 
-    public int getCss() {
-        return css;
+    public int getTagId() {
+        return tagId;
     }
 
-    public void setCss(int css) {
-        this.css = css;
+    public void setTagId(int tagId) {
+        this.tagId = tagId;
     }
 
-    public int getJs() {
-        return js;
-    }
+    int tagId;
 
-    public void setJs(int js) {
-        this.js = js;
-    }
 
-    public int getVue() {
-        return vue;
-    }
 
-    public void setVue(int vue) {
-        this.vue = vue;
-    }
-
-    public int getReact() {
-        return react;
-    }
-
-    public void setReact(int react) {
-        this.react = react;
-    }
-
-    int id,html,css,js,vue,react;
-    String tag_name;
-
-    public String getTag_name() {
-        return tag_name;
-    }
-
-    public void setTag_name(String tag_name) {
-        this.tag_name = tag_name;
-    }
 }

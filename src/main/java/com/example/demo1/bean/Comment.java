@@ -2,7 +2,20 @@ package com.example.demo1.bean;
 
 public class Comment {
     int commentId,userId;
-    String commentContent,commentDate;
+    String commentContent;
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", userId=" + userId +
+                ", commentContent='" + commentContent + '\'' +
+                ", commentDate='" + commentDate + '\'' +
+                ", user=" + user +
+                '}';
+    }
+
+    String commentDate;
 
     public User getUser() {
         return user;

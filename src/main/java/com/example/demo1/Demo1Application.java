@@ -9,11 +9,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Demo1Application {
 
     public static void main(String[] args) {
+
         SpringApplication.run(Demo1Application.class, args);
         System.out.println("\n\ndemo1 is run at http://localhost:8080 \n");
         System.out.println("login is run at http://localhost:8080/login \n");
         System.out.println("register is run at http://localhost:8080/register \n\n");
-        System.out.println("register is run at http://localhost:8080/getAllArticle \n\n");
+        System.out.println("register is run at http://localhost:8080//article/getAllArticles \n\n");
 
 
     }

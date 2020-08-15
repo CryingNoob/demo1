@@ -1,16 +1,16 @@
 package com.example.demo1.bean;
 
 public class Collect {
-    int userI, articleId;
+    int userId, articleId;
 
     int id;
 
-    public int getUserI() {
-        return userI;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserI(int userI) {
-        this.userI = userI;
+    public void setUserId(int userI) {
+        this.userId = userI;
     }
 
     public int getArticleId() {

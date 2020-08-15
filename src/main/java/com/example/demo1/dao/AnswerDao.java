@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface AnswerDao {
 
-    @Select("select * from answer")
+    @Select("select * from answer where question_id = #{questionId}")
 
-    List<Answer> getAnswer();
+    List<Answer> getAnswer( int questionId);
 }

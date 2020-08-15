@@ -2,13 +2,14 @@ package com.example.demo1.serviceImpl;
 
 import com.example.demo1.bean.Like;
 import com.example.demo1.dao.LikeDao;
+import com.example.demo1.service.LikeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class LikeServiceImpl {
+public class LikeServiceImpl  implements LikeService {
 
     private LikeDao likeDao;
     @Resource

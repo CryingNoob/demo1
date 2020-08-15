@@ -9,5 +9,5 @@ import java.util.List;
 @Service
 public interface TagDao {
     @Select("select * from tag where tag_id= #{tagId}")
-    List<Tag> getTag( int tagId);
+    Tag getTag( int tagId);
 }

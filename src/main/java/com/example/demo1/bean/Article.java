@@ -4,6 +4,19 @@ import java.util.List;
 
 public class Article {
 
+
+
+
+    int articleId,articleAuthorId,likeNumber,collectNumber,commentNumber;
+    String articleTitle;
+    String articleContent;
+    String articleDate;
+
+    List<Tag> article_tags;
+    User article_author;
+    List<User> like_users,collect_user;
+    List<Comment> comment_content;
+
     @Override
     public String toString() {
         return "Article{" +
@@ -15,16 +28,13 @@ public class Article {
                 ", articleTitle='" + articleTitle + '\'' +
                 ", articleContent='" + articleContent + '\'' +
                 ", articleDate='" + articleDate + '\'' +
+                ", article_tags=" + article_tags.toString() +
+                ", article_author=" + article_author.toString() +
+                ", like_users=" + like_users.toString() +
+                ", collect_user=" + collect_user.toString() +
+                ", comment_content=" + comment_content.toString() +
                 '}';
     }
-
-    int articleId,articleAuthorId,likeNumber,collectNumber,commentNumber;
-    String articleTitle,articleContent,articleDate;
-
-    List<Tag> article_tags;
-    User article_author;
-    List<User> like_users,collect_user;
-    List<Comment> comment_content;
 
     public List<Tag> getArticle_tags() {
         return article_tags;
@@ -129,6 +139,7 @@ public class Article {
     public void setArticleDate(String articleDate) {
         this.articleDate = articleDate;
     }
+
 
 
 }

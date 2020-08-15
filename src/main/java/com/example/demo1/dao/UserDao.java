@@ -17,6 +17,8 @@ public interface UserDao {
 //            @Result(property = "userPassword", column = "user_password")})
     //where userName=#{userName} and userPassword=#{userPassword}
     User login(User user);
+    @Select("select * from user where user_id = #{id}")
+    User getUser(int id);
 //register
     @Insert("insert into user (user_name, user_password) values(#{userName}, #{userPassword})")
     int  register(User user);
