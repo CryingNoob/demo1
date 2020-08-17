@@ -1,6 +1,7 @@
 package com.example.demo1.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo1.bean.*;
 import com.example.demo1.service.*;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ArticleController {
@@ -88,15 +90,39 @@ public class ArticleController {
 
 //（文章id，article_title,article_author,article_content,
 //article_date(YYYY-MM-DD格式),article_tag(对象数组))
-    @PostMapping("/article/addArticle")
+
+    @PostMapping(value="/article/addArticle",consumes = "application/json")
     public boolean addArticle(@RequestBody Article article){
-        System.out.println(article.toString());
 
-
-
-        return false;
+        try {
+            System.out.println(article.toString2());
+            System.out.println(article.getArticleAuthor());
+            System.out.println(userService.getUserByName(article.getArticleAuthor()));
+            System.out.println(userService.getUserByName(article.getArticleAuthor()).getUserIdId());
+            article.setArticleAuthorId(userService.getUserByName(article.getArticleAuthor()).getUserIdId());
+            articleService.addArticle(article);
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("error at /article/addArticle ");
+            return false;
+        }
+        return true;
     }
+//    @PostMapping(value="/article/addArticle",consumes = "application/json")
+//    public boolean addArticle(@RequestBody Map<String,Object> article){
+//
+//        System.out.println(article);
+//
+//
+//
+//        return false;
+//    }
 
+//    @PostMapping(value="/article/addArticle")
+//    public boolean addArticle(@RequestBody JSONObject article){
+//        System.out.println(article.toString());
+//    return true;
+//    }
 
     @GetMapping("/article/getAllArticles")
     public List<Article> getAllArticle(){
@@ -115,27 +141,27 @@ public class ArticleController {
 
                 for (Article a :articleList) {
 
-                    a.setArticle_author(userService.getUser(a.getid()));
-                    List<ArticleTag> articleTagList=articleTagService.getArticleTag(a.getid());
+                    a.setArticleAuthor(userService.getUser(a.getArticleAuthorId()).getUserName());
+                    List<ArticleTag> articleTagList=articleTagService.getArticleTag(a.getId());
 
                     for(ArticleTag articleTagI:articleTagList){
                         article_tags.add(tagService.getTag(articleTagI.getTagId()));
                     }
                     a.setArticle_tag(article_tags);
 
-                    List<Like> likeList=likeService.getLike(a.getid());
+                    List<Like> likeList=likeService.getLike(a.getId());
                     for(Like like:likeList){
                         like_users.add(userService.getUser(like.getUserId()));
                     }
                     a.setLike_users(like_users);
 
-                    List<Collect> collectList = collectService.getCollect(a.getid());
+                    List<Collect> collectList = collectService.getCollect(a.getId());
                     for(Collect collect:collectList){
                         collect_users.add(userService.getUser(collect.getUserId()));
                     }
                     a.setCollect_user(collect_users);
 
-                    comment_content = commentService.getComment(a.getid());
+                    comment_content = commentService.getComment(a.getId());
                     a.setComment_content(comment_content);
 
                 }

@@ -19,6 +19,8 @@ public interface UserDao {
     User login(User user);
     @Select("select * from user where user_id = #{id}")
     User getUser(int id);
+    @Select("select * from user where user_name = #{userName}")
+    User getUserByName(String userName);
 //register
     @Insert("insert into user (user_name, user_password) values(#{userName}, #{userPassword})")
     int  register(User user);

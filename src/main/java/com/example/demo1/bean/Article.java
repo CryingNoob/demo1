@@ -11,76 +11,19 @@ public class Article {
     String articleTitle;
     String articleContent;
     String articleDate;
+    String articleAuthor;
+
 
     List<Tag> article_tag;
-    User article_author;
+
     List<User> like_users,collect_user;
     List<Comment> comment_content;
 
-    @Override
-    public String toString() {
-        return "Article{" +
-                "id=" + id +
-                ", articleAuthorId=" + articleAuthorId +
-                ", likeNumber=" + likeNumber +
-                ", collectNumber=" + collectNumber +
-                ", commentNumber=" + commentNumber +
-                ", articleTitle='" + articleTitle + '\'' +
-                ", articleContent='" + articleContent + '\'' +
-                ", articleDate='" + articleDate + '\'' +
-                ", article_tag=" + article_tag.toString() +
-                ", article_author=" + article_author.toString() +
-                ", like_users=" + like_users.toString() +
-                ", collect_user=" + collect_user.toString() +
-                ", comment_content=" + comment_content.toString() +
-                '}';
-    }
-
-    public List<Tag> getArticle_tag() {
-        return article_tag;
-    }
-
-    public void setArticle_tag(List<Tag> article_tag) {
-        this.article_tag = article_tag;
-    }
-
-    public User getArticle_author() {
-        return article_author;
-    }
-
-    public void setArticle_author(User article_author) {
-        this.article_author = article_author;
-    }
-
-    public List<User> getLike_users() {
-        return like_users;
-    }
-
-    public void setLike_users(List<User> like_users) {
-        this.like_users = like_users;
-    }
-
-    public List<User> getCollect_user() {
-        return collect_user;
-    }
-
-    public void setCollect_user(List<User> collect_user) {
-        this.collect_user = collect_user;
-    }
-
-    public List<Comment> getComment_content() {
-        return comment_content;
-    }
-
-    public void setComment_content(List<Comment> comment_content) {
-        this.comment_content = comment_content;
-    }
-
-    public int getid() {
+    public int getId() {
         return id;
     }
 
-    public void setid(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -140,6 +83,80 @@ public class Article {
         this.articleDate = articleDate;
     }
 
+    public String getArticleAuthor() {
+        return articleAuthor;
+    }
+
+    public void setArticleAuthor(String articleAuthor) {
+        this.articleAuthor = articleAuthor;
+    }
+
+    public List<Tag> getArticle_tag() {
+        return article_tag;
+    }
+
+    public void setArticle_tag(List<Tag> article_tag) {
+        this.article_tag = article_tag;
+    }
+
+
+    public List<User> getLike_users() {
+        return like_users;
+    }
+
+    public void setLike_users(List<User> like_users) {
+        this.like_users = like_users;
+    }
+
+    public List<User> getCollect_user() {
+        return collect_user;
+    }
+
+    public void setCollect_user(List<User> collect_user) {
+        this.collect_user = collect_user;
+    }
+
+    public List<Comment> getComment_content() {
+        return comment_content;
+    }
+
+    public void setComment_content(List<Comment> comment_content) {
+        this.comment_content = comment_content;
+    }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+
+                ",articleAuthor="+articleAuthor+
+                ", likeNumber=" + likeNumber +
+                ", collectNumber=" + collectNumber +
+                ", commentNumber=" + commentNumber +
+                ", articleTitle='" + articleTitle + '\'' +
+                ", articleContent='" + articleContent + '\'' +
+                ", articleDate='" + articleDate + '\'' +
+                ", article_tag=" + article_tag.toString() +
+
+                ", like_users=" + like_users.toString() +
+                ", collect_user=" + collect_user.toString() +
+                ", comment_content=" + comment_content.toString() +
+                '}';
+    }
+
+    public String toString2() {
+        return "Article{" +
+                "id=" + id +
+                ",articleAuthor="+articleAuthor+
+
+                ", articleTitle='" + articleTitle + '\'' +
+                ", articleContent='" + articleContent + '\'' +
+                ", articleDate='" + articleDate + '\'' +
+                ", article_tag=" + article_tag.toString() +
+
+
+                '}';
+    }
 
 
 }

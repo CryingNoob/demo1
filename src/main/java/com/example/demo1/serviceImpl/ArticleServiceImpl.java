@@ -18,4 +18,8 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> getAllArticle() {
         return articleDao.getAllArticle();
     }
+    public boolean addArticle(Article article){
+
+        return articleDao.addArticle(article);
+    }
 }
