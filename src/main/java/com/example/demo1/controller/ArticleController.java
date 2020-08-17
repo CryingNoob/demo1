@@ -1,6 +1,7 @@
 package com.example.demo1.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo1.bean.*;
 import com.example.demo1.service.*;
@@ -173,5 +174,104 @@ public class ArticleController {
             return null;
         }
         return articleList;
+    }
+
+
+    @PostMapping("article/likeArticle")
+    public boolean likeArticle(@RequestBody Map<String, Object> json){
+        System.out.println(json);
+        try{
+            //User user= (User)json.get("user");
+            User user = JSON.parseObject(JSON.toJSONString(json.get("user")),User.class);
+            System.out.println(user.toString());
+            int articleId = (int) json.get("article_id");
+            boolean isLiked = (boolean) json.get("isliked");
+            System.out.println(articleId);
+            System.out.println(isLiked);
+
+            if(isLiked){
+
+                likeService.deleteLike(articleId,user.getUserIdId());
+            }else{
+                likeService.addLike(articleId,user.getUserIdId());
+            }
+        }catch ( Exception e){
+
+            System.out.println("error at likeArticle");
+            e.printStackTrace();
+
+        }
+
+        return true;
+    }
+
+    @PostMapping("article/collectArticle")
+    public boolean collectArticle(@RequestBody Map<String, Object> json){
+        System.out.println(json);
+        try{
+            //User user= (User)json.get("user");
+            User user = JSON.parseObject(JSON.toJSONString(json.get("user")),User.class);
+            System.out.println(user.toString());
+            int articleId = (int) json.get("article_id");
+            boolean isLiked = (boolean) json.get("iscollected");
+            System.out.println(articleId);
+            System.out.println(isLiked);
+
+            if(isLiked){
+
+                collectService.deleteCollect(articleId,user.getUserIdId());
+            }else{
+                collectService.addCollect(articleId,user.getUserIdId());
+            }
+        }catch ( Exception e){
+
+            System.out.println("error at collectArticle");
+            e.printStackTrace();
+
+        }
+
+        return true;
+    }
+
+//    @PostMapping("article/commentArticle")
+//    public boolean commentArticle(@RequestBody Map<String, Object> json){
+//        //post请求，五个参数（article_id,comment_id,comment_content,comment_date,
+//        //user信息（一个对象）)
+//        try{
+//            User user;
+//            int userId,articleId,commentId;
+//            String commentContent,commentDate;
+//
+//            user=(User)json.get("user");
+//            userId =user.getUserIdId();
+//            commentId=(int) json.get("comment_id");
+//            articleId = (int) json.get("article_id");
+//            commentContent= (String) json.get("comment_content");
+//            commentDate= (String) json.get("comment_date");
+//
+//
+//        }catch ( Exception e){
+//            e.printStackTrace();
+//        }
+//
+//return true;
+//    }
+
+    @PostMapping("article/commentArticle")
+    public boolean commentArticle(@RequestBody Comment comment){
+
+        try{
+            System.out.println(comment);
+            comment.setUserId(comment.getUser().getUserIdId());
+           boolean re= commentService.addComment(comment);
+
+           return re;
+
+        }catch ( Exception e){
+            System.out.println("error at comment");
+            e.printStackTrace();
+            return false;
+        }
+
     }
 }

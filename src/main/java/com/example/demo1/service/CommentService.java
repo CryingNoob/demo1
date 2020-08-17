@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CommentService {
     List<Comment> getComment(int articleId) ;
+    boolean addComment(Comment comment);
 }

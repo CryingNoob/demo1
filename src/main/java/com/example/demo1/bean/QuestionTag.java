@@ -1,7 +1,7 @@
 package com.example.demo1.bean;
 
 public class QuestionTag {
-    int id,html,css,js,vue,react;
+    int id,questionId,tagId;
 
     public int getId() {
         return id;
@@ -11,43 +11,19 @@ public class QuestionTag {
         this.id = id;
     }
 
-    public int getHtml() {
-        return html;
+    public int getQuestionId() {
+        return questionId;
     }
 
-    public void setHtml(int html) {
-        this.html = html;
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
     }
 
-    public int getCss() {
-        return css;
+    public int getTagId() {
+        return tagId;
     }
 
-    public void setCss(int css) {
-        this.css = css;
-    }
-
-    public int getJs() {
-        return js;
-    }
-
-    public void setJs(int js) {
-        this.js = js;
-    }
-
-    public int getVue() {
-        return vue;
-    }
-
-    public void setVue(int vue) {
-        this.vue = vue;
-    }
-
-    public int getReact() {
-        return react;
-    }
-
-    public void setReact(int react) {
-        this.react = react;
+    public void setTagId(int tagId) {
+        this.tagId = tagId;
     }
 }

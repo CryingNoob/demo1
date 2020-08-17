@@ -21,4 +21,8 @@ public class CommentServiceImpl  implements CommentService {
     public List<Comment> getComment(int articleId){
         return  commentDao.getComment(articleId);
     }
+
+    public boolean addComment(Comment comment){
+       return commentDao.addComment(comment);
+    }
 }

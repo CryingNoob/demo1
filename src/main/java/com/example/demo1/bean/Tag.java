@@ -1,24 +1,32 @@
 package com.example.demo1.bean;
 
 public class Tag {
-    int id;
+    int tag_id;
+
+
+    String tag_name;
 
     @Override
     public String toString() {
         return "Tag{" +
-                "id=" + id +
-                ", tag='" + tag + '\'' +
+                "tag_id=" + tag_id +
+                ", tag_name='" + tag_name + '\'' +
                 '}';
     }
 
-    String tag;
-
-    public int getId() {
-        return id;
+    public int getTag_id() {
+        return tag_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTag_id(int tag_id) {
+        this.tag_id = tag_id;
     }
 
+    public String getTag_name() {
+        return tag_name;
+    }
+
+    public void setTag_name(String tag_name) {
+        this.tag_name = tag_name;
+    }
 }

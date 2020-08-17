@@ -1,31 +1,37 @@
 package com.example.demo1.bean;
 
 public class Comment {
-    int commentId,userId;
-    String commentContent;
+    int commentId,articleId,userId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     @Override
     public String toString() {
         return "Comment{" +
                 "commentId=" + commentId +
-                ", userId=" + userId +
+                ", articleId=" + articleId +
                 ", commentContent='" + commentContent + '\'' +
                 ", commentDate='" + commentDate + '\'' +
                 ", user=" + user +
+
                 '}';
     }
 
+    String commentContent;
+
+
     String commentDate;
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     User user;
+
     public int getCommentId() {
         return commentId;
     }
@@ -34,12 +40,12 @@ public class Comment {
         this.commentId = commentId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getArticleId() {
+        return articleId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
     }
 
     public String getCommentContent() {
@@ -57,4 +63,15 @@ public class Comment {
     public void setCommentDate(String commentDate) {
         this.commentDate = commentDate;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+//post请求，五个参数（article_id,comment_id,comment_content,comment_date,
+    //user信息（一个对象）)
+
 }

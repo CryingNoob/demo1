@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CollectService {
     List<Collect> getCollect(int articleId);
+    boolean addCollect(int articleId, int userId);
+    boolean deleteCollect(int articleId, int userId);
 }

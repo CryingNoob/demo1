@@ -18,4 +18,10 @@ public class CollectServiceImpl  implements CollectService {
     public List<Collect> getCollect(int article){
         return collectDao.getCollect(article);
     }
+    public boolean addCollect(int articleId, int userId){
+        return collectDao.addCollect(articleId, userId);
+    }
+    public boolean deleteCollect(int articleId, int userId){
+        return collectDao.deleteCollect(articleId,userId);
+    }
 }
