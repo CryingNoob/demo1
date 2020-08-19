@@ -20,5 +20,8 @@ public class QuestionServiceImpl implements QuestionService {
         return  questionDao.getAllQuestion();
     }
 
-
+    @Override
+    public Boolean addQuestion(Question question) {
+        return questionDao.addQuestion(question);
+    }
 }

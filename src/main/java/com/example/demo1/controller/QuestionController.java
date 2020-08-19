@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class QuestionController {
@@ -108,6 +109,27 @@ public class QuestionController {
         return res;
 
     }
+//六个参数（问题id,question_author,question_content,
+//question_date(YYYY-MM-DD格式),question_tag(对象数组))
 
+
+    //int questionId;
+    //    String questionAuthor;
+    //    String questionContent;
+    //    String questionDate;
+    //    int answerNumber;
+    //    List<Tag> questionTag;
+    //    List<Answer> answerContent;
+    @PostMapping("question/addQuestion")
+    public boolean addQuestion(@RequestBody Question question){
+
+        boolean res = false;
+        try{
+            res=questionService.addQuestion(question);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return res;
+    }
 
 }
