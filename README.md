@@ -12,3 +12,5 @@
  (@Request Map<string,Object> json)
  其中object不能直接解析为实体类,需要JSON.parseObject()来解析
   User user = JSON.parseObject(JSON.toJSONString(json.get("user")),User.class);
+
+#大坑 springboot会根据bean里面的get / set方法来改变返回给的字段名
