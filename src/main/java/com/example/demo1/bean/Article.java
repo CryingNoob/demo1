@@ -7,24 +7,24 @@ public class Article {
 
 
 
-    int id,articleAuthorId,likeNumber,collectNumber,commentNumber;
+    int articleId,articleAuthorId,likeNumber,collectNumber,commentNumber;
     String articleTitle;
     String articleContent;
     String articleDate;
     String articleAuthor;
-
+    String username;
 
     List<Tag> article_tag;
 
     List<User> like_users,collect_user;
     List<Comment> comment_content;
 
-    public int getId() {
-        return id;
+    public int getArticleId() {
+        return articleId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSrticleId(int id) {
+        this.articleId=articleId;
     }
 
     public int getArticleAuthorId() {
@@ -127,7 +127,7 @@ public class Article {
     @Override
     public String toString() {
         return "Article{" +
-                "id=" + id +
+                "articleId=" + articleId +
 
                 ",articleAuthor="+articleAuthor+
                 ", likeNumber=" + likeNumber +
@@ -146,7 +146,7 @@ public class Article {
 
     public String toString2() {
         return "Article{" +
-                "id=" + id +
+                "articleId=" + articleId +
                 ",articleAuthor="+articleAuthor+
 
                 ", articleTitle='" + articleTitle + '\'' +

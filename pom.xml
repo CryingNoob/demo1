@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>demo1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <userName>demo1</userName>
+    <username>demo1</username>
     <description>Demo project for Spring Boot</description>
 
     <properties>

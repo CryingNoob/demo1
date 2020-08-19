@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface AnswerService {
     List<Answer> getAnswer( int questionId);
+    boolean addAnswer(Answer answer);
 }

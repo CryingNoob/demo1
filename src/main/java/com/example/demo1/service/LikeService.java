@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface LikeService {
     List<Like> getLike(int articleId);
-    boolean addLike(int articleId, int userId);
-    boolean deleteLike(int articleId, int userId);
+    boolean addLike(int articleId, int userid);
+    boolean deleteLike(int articleId, int userid);
 }

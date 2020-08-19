@@ -11,7 +11,7 @@ import java.util.List;
 public interface CommentDao {
     @Select("select * from comment where Article_id = #{articleId}")
     List<Comment> getComment(int articleId) ;
-    @Insert("insert into comment(comment_id,comment_date,comment_content,user_id,article_id) " +
-            "values(#{commentId},#{commentDate},#{commentContent},#{userId},#{articleId})")
+    @Insert("insert into comment(comment_id,comment_date,comment_content,userid,article_id) " +
+            "values(#{commentId},#{commentDate},#{commentContent},#{userid},#{articleId})")
     boolean addComment(Comment comment);
 }

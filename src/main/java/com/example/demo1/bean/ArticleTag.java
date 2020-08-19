@@ -3,6 +3,16 @@ package com.example.demo1.bean;
 public class ArticleTag {
     int id;
     int articleId;
+    int tagId;
+
+    @Override
+    public String toString() {
+        return "ArticleTag{" +
+                "id=" + id +
+                ", articleId=" + articleId +
+                ", tagId=" + tagId +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -28,7 +38,7 @@ public class ArticleTag {
         this.tagId = tagId;
     }
 
-    int tagId;
+
 
 
 

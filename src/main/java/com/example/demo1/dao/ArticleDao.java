@@ -24,8 +24,8 @@ public interface ArticleDao {
     //
     //
     //                '}';
-    @Insert("insert into Article(id,article_author_id,article_title,article_content,article_date) " +
-            "values(#{id},#{articleAuthorId},#{articleTitle},#{articleContent},#{articleDate})")
+    @Insert("insert into Article(article_id,article_author_id,article_title,article_content,article_date) " +
+            "values(#{articleId},#{articleAuthorId},#{articleTitle},#{articleContent},#{articleDate})")
     boolean addArticle(Article article);
 
 

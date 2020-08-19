@@ -1,18 +1,18 @@
 package com.example.demo1.bean;
 
 public class Answer {
-    int answerId,userId,questionId;
-    String answerContent,answerDate,userName;
+    int answerId,userid,questionId;
+    String answerContent,answerDate,username;
 
     @Override
     public String toString() {
         return "Answer{" +
                 "answerId=" + answerId +
-                ", userId=" + userId +
+                ", userid=" + userid +
                 ", questionId=" + questionId +
                 ", answerContent='" + answerContent + '\'' +
                 ", answerDate='" + answerDate + '\'' +
-                ", userName='" + userName + '\'' +
+                ", username='" + username + '\'' +
                 '}';
     }
 
@@ -24,12 +24,12 @@ public class Answer {
         this.answerId = answerId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getuserid() {
+        return userid;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setuserid(int userid) {
+        this.userid = userid;
     }
 
     public int getQuestionId() {
@@ -56,11 +56,11 @@ public class Answer {
         this.answerDate = answerDate;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getusername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setusername(String username) {
+        this.username = username;
     }
 }

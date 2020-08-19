@@ -2,16 +2,16 @@ package com.example.demo1.bean;
 
 public class Like {
 
-    int userId, articleId;
+    int userid, articleId;
 
     int id;
 
-    public int getUserId() {
-        return userId;
+    public int getuserid() {
+        return userid;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setuserid(int userid) {
+        this.userid = userid;
     }
 
     public int getArticleId() {

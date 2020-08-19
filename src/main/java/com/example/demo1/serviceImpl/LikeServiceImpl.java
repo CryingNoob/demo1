@@ -19,13 +19,13 @@ public class LikeServiceImpl  implements LikeService {
     public List<Like> getLike(int article){
         return  likeDao.getLike(article);
     }
-    //boolean addLike(int articleId, int userId);
-    //    boolean deleteLike(int articleId, int userId);
-    public boolean addLike(int articleId, int userId){
-        return likeDao.addLike(articleId, userId);
+    //boolean addLike(int articleId, int userid);
+    //    boolean deleteLike(int articleId, int userid);
+    public boolean addLike(int articleId, int userid){
+        return likeDao.addLike(articleId, userid);
     }
-    public boolean deleteLike(int articleId, int userId){
+    public boolean deleteLike(int articleId, int userid){
 
-        return likeDao.deleteLike(articleId, userId);
+        return likeDao.deleteLike(articleId, userid);
     }
 }

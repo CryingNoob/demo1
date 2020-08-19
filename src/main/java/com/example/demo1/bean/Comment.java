@@ -1,36 +1,46 @@
 package com.example.demo1.bean;
 
 public class Comment {
-    int commentId,articleId,userId;
+    int commentId,articleId,userid;
 
-    public int getUserId() {
-        return userId;
-    }
+    String commentContent;
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+
+    String commentDate;
+    String username;
+
+    User user;
 
     @Override
     public String toString() {
         return "Comment{" +
                 "commentId=" + commentId +
                 ", articleId=" + articleId +
+                ", userid=" + userid +
                 ", commentContent='" + commentContent + '\'' +
                 ", commentDate='" + commentDate + '\'' +
+                ", username='" + username + '\'' +
                 ", user=" + user +
-
                 '}';
     }
 
-    String commentContent;
+    public int getuserid() {
+        return userid;
+    }
+
+    public void setuserid(int userid) {
+        this.userid = userid;
+    }
+
+    public String getusername() {
+        return username;
+    }
+
+    public void setusername(String username) {
+        this.username = username;
+    }
 
 
-    String commentDate;
-
-
-
-    User user;
 
     public int getCommentId() {
         return commentId;

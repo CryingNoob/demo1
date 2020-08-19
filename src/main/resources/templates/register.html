@@ -10,17 +10,17 @@
 hello , 注册
 <!--<form method="post" action="http://localhost:8080/post">-->
 
-用户名<input type="text" placeholder="aaa" userName="userName" value="aaa"> <br>
-mima<input type="userPassword" userName="userPassword" value="bbb">
+用户名<input type="text" placeholder="aaa" username="username" value="aaa"> <br>
+mima<input type="userPassword" username="userPassword" value="bbb">
 <button onclick=sub1()> submit</button>
 <p class="xxx" id="aaa">xxxx</p>
 <script>
     function sub1() {
         console.log("123");
         var user= {
-                'userName':$("[userName='userName']").val(),
-                'userPassword':$("[userName='userPassword']").val()
-                // 'userName': 'xxx',
+                'username':$("[username='username']").val(),
+                'userPassword':$("[username='userPassword']").val()
+                // 'username': 'xxx',
                 // 'userPassword': 'ppp'
             };
         console.log(user);
@@ -34,7 +34,7 @@ mima<input type="userPassword" userName="userPassword" value="bbb">
                 contentType:"application/json",
                 success: function (data) {
                     console.log("data", data);
-                    $('#aaa').text("userName : " + data.userName+ "  userPassword:" +data.userPassword);
+                    $('#aaa').text("username : " + data.username+ "  userPassword:" +data.userPassword);
                 }
         });
     }

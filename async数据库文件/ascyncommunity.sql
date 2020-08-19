@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 17/08/2020 17:12:35
+ Date: 19/08/2020 14:35:01
 */
 
 SET NAMES utf8mb4;
@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `answer`;
 CREATE TABLE `answer`  (
   `answer_id` int(0) NOT NULL AUTO_INCREMENT,
   `answer_content` longtext CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `user_id` int(0) NOT NULL,
+  `userid` int(0) NOT NULL,
   `answer_date` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `question_id` int(8) UNSIGNED ZEROFILL NOT NULL,
   PRIMARY KEY (`answer_id`) USING BTREE
@@ -43,7 +43,7 @@ INSERT INTO `answer` VALUES (4, '我也笑啦', 3, '2020-08-14', 00000002);
 -- ----------------------------
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article`  (
-  `id` int(0) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `article_id` int(0) UNSIGNED NOT NULL AUTO_INCREMENT,
   `article_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `article_author_id` int(8) UNSIGNED ZEROFILL NOT NULL,
   `article_date` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `article`  (
   `like_number` int(8) UNSIGNED ZEROFILL NOT NULL DEFAULT 00000000,
   `comment_number` int(8) UNSIGNED ZEROFILL NOT NULL DEFAULT 00000000,
   `collect_number` int(8) UNSIGNED ZEROFILL NOT NULL DEFAULT 00000000,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`article_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -70,7 +70,7 @@ CREATE TABLE `article_tag`  (
   `article_id` int(0) NOT NULL,
   `tag_id` int(0) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article_tag
@@ -80,8 +80,10 @@ INSERT INTO `article_tag` VALUES (2, 1, 2);
 INSERT INTO `article_tag` VALUES (3, 1, 3);
 INSERT INTO `article_tag` VALUES (4, 2, 2);
 INSERT INTO `article_tag` VALUES (5, 2, 3);
-INSERT INTO `article_tag` VALUES (6, 2, 5);
+INSERT INTO `article_tag` VALUES (6, 2, 0);
 INSERT INTO `article_tag` VALUES (7, 2, 4);
+INSERT INTO `article_tag` VALUES (8, 3, 0);
+INSERT INTO `article_tag` VALUES (9, 3, 1);
 
 -- ----------------------------
 -- Table structure for comment
@@ -90,11 +92,11 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment`  (
   `comment_id` int(0) UNSIGNED NOT NULL AUTO_INCREMENT,
   `comment_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `user_id` int(0) UNSIGNED NOT NULL,
+  `userid` int(0) UNSIGNED NOT NULL,
   `comment_date` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `article_id` int(0) NOT NULL,
   PRIMARY KEY (`comment_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comment
@@ -102,6 +104,7 @@ CREATE TABLE `comment`  (
 INSERT INTO `comment` VALUES (1, 'hh,爷笑啦', 1, '20200812', 1);
 INSERT INTO `comment` VALUES (2, 'hh,不会吧不会吧', 2, '20200814', 2);
 INSERT INTO `comment` VALUES (3, ' pinglumn内容', 1, ' 2020-08-17', 1);
+INSERT INTO `comment` VALUES (4, '阿斯顿发射点', 2, '2020-08-19', 3);
 
 -- ----------------------------
 -- Table structure for like_and_collect
@@ -109,7 +112,7 @@ INSERT INTO `comment` VALUES (3, ' pinglumn内容', 1, ' 2020-08-17', 1);
 DROP TABLE IF EXISTS `like_and_collect`;
 CREATE TABLE `like_and_collect`  (
   `article_id` int(8) UNSIGNED ZEROFILL NOT NULL,
-  `user_id` int(0) NULL DEFAULT NULL,
+  `userid` int(0) NULL DEFAULT NULL,
   `like_or_collect` tinyint(1) UNSIGNED ZEROFILL NOT NULL COMMENT '0 : like 1: collect',
   `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`) USING BTREE
@@ -137,8 +140,8 @@ CREATE TABLE `question`  (
 -- ----------------------------
 -- Records of question
 -- ----------------------------
-INSERT INTO `question` VALUES (1, '1', '就这??', '2020-08-12', 00000001);
-INSERT INTO `question` VALUES (2, '2', '九折水瓶??', '2020-08-14', 00000002);
+INSERT INTO `question` VALUES (1, 'linxiuming', '就这??', '2020-08-12', 00000001);
+INSERT INTO `question` VALUES (2, 'aaa', '九折水瓶??', '2020-08-14', 00000002);
 
 -- ----------------------------
 -- Table structure for question_tag
@@ -183,17 +186,18 @@ INSERT INTO `tag` VALUES (4, 'react');
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `user_id` int(0) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `user_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`user_id`) USING BTREE,
-  UNIQUE INDEX `user_user_name_uindex`(`user_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  `userid` int(0) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `userpassword` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`userid`) USING BTREE,
+  UNIQUE INDEX `user_user_name_uindex`(`username`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (1, 'linxiuming', '123456');
 INSERT INTO `user` VALUES (2, 'aaa', 'bbb');
+INSERT INTO `user` VALUES (3, 'baiwenliang', 'bbb\r\n');
 
 SET FOREIGN_KEY_CHECKS = 1;

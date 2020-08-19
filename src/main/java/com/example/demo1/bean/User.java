@@ -1,41 +1,42 @@
 package com.example.demo1.bean;
 
+import com.alibaba.fastjson.parser.Feature;
+
 public class User {
-    private int userId;//8
-    private String userName;
-    private String userPassword;
+    private int userid;//8
+    private String username;
+    private String userpassword;
 
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", userPassword='" + userPassword + '\'' +
+                "userid=" + userid +
+                ", username='" + username + '\'' +
+                ", userpassword='" + userpassword + '\'' +
                 '}';
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public int getuserid() {
+        return userid;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setuserid(int userid) {
+        this.userid = userid;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public String getusername() {
+        return username;
     }
 
-    public int getUserIdId() {
-        return userId;
+    public void setusername(String username) {
+        this.username = username;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserpassword() {
+        return userpassword;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public void setUserpassword(String userpassword) {
+        this.userpassword = userpassword;
     }
-
 }

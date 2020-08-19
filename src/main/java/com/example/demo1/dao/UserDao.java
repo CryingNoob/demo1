@@ -11,18 +11,18 @@ import org.springframework.stereotype.Service;
 public interface UserDao {
 
 //login
-    @Select("select * from user  where user_name = #{userName} and user_password=#{userPassword}" )
+    @Select("select * from user  where username = #{username} and userpassword=#{userPassword}" )
 //    @Results(value = {
-//            @Result(property = "userName", column = "user_name"),
+//            @Result(property = "username", column = "user_name"),
 //            @Result(property = "userPassword", column = "user_password")})
-    //where userName=#{userName} and userPassword=#{userPassword}
+    //where username=#{username} and userPassword=#{userPassword}
     User login(User user);
-    @Select("select * from user where user_id = #{id}")
+    @Select("select * from user where userid = #{id}")
     User getUser(int id);
-    @Select("select * from user where user_name = #{userName}")
-    User getUserByName(String userName);
+    @Select("select * from user where username = #{username}")
+    User getUserByName(String username);
 //register
-    @Insert("insert into user (user_name, user_password) values(#{userName}, #{userPassword})")
+    @Insert("insert into user (username, userpassword) values(#{username}, #{userPassword})")
     int  register(User user);
 
 

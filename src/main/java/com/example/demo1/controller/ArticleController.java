@@ -99,8 +99,8 @@ public class ArticleController {
             System.out.println(article.toString2());
             System.out.println(article.getArticleAuthor());
             System.out.println(userService.getUserByName(article.getArticleAuthor()));
-            System.out.println(userService.getUserByName(article.getArticleAuthor()).getUserIdId());
-            article.setArticleAuthorId(userService.getUserByName(article.getArticleAuthor()).getUserIdId());
+            System.out.println(userService.getUserByName(article.getArticleAuthor()).getuserid());
+            article.setArticleAuthorId(userService.getUserByName(article.getArticleAuthor()).getuserid());
             articleService.addArticle(article);
         }catch(Exception e){
             e.printStackTrace();
@@ -128,7 +128,7 @@ public class ArticleController {
     @GetMapping("/article/getAllArticles")
     public List<Article> getAllArticle(){
         ArrayList<Article> articleList;
-        List<Tag> article_tags=new ArrayList<>();
+
         User article_author=new User();
         List<User> like_users=new ArrayList<>(),collect_users=new ArrayList<>();
         List<Comment> comment_content=new ArrayList<>();
@@ -142,27 +142,50 @@ public class ArticleController {
 
                 for (Article a :articleList) {
 
-                    a.setArticleAuthor(userService.getUser(a.getArticleAuthorId()).getUserName());
-                    List<ArticleTag> articleTagList=articleTagService.getArticleTag(a.getId());
+                    List<Tag> article_tags=new ArrayList<>();
+                    a.setArticleAuthor(userService.getUser(a.getArticleAuthorId()).getusername());
+                    List<ArticleTag> articleTagList=articleTagService.getArticleTag(a.getArticleId());
 
                     for(ArticleTag articleTagI:articleTagList){
-                        article_tags.add(tagService.getTag(articleTagI.getTagId()));
-                    }
-                    a.setArticle_tag(article_tags);
+                        System.out.print( "arid"+a.getArticleId()+" tag"+articleTagI+"tmp1");
+                        Tag tmp1=new Tag();
+                        int tmp2=articleTagI.getTagId();
+                               tmp1 =tagService.getTag(tmp2);
+                        System.out.println(tmp1+"tmp2"+tmp2);
 
-                    List<Like> likeList=likeService.getLike(a.getId());
-                    for(Like like:likeList){
-                        like_users.add(userService.getUser(like.getUserId()));
+                        article_tags.add(tmp1);
                     }
+                    System.out.println(article_tags);
+                    a.setArticle_tag(article_tags);
+                    System.out.println("\n\n");
+
+
+
+                    List<Like> likeList=likeService.getLike(a.getArticleId());
+                    for(Like like:likeList){
+
+                        like_users.add(userService.getUser(like.getuserid()));
+                    }
+                    User testUser=new User();
+
                     a.setLike_users(like_users);
 
-                    List<Collect> collectList = collectService.getCollect(a.getId());
+                    List<Collect> collectList = collectService.getCollect(a.getArticleId());
                     for(Collect collect:collectList){
-                        collect_users.add(userService.getUser(collect.getUserId()));
+                        User tmpU=new User();
+                        tmpU=userService.getUser(collect.getuserid());
+                        System.out.println(tmpU);
+                        collect_users.add(tmpU);
                     }
                     a.setCollect_user(collect_users);
 
-                    comment_content = commentService.getComment(a.getId());
+                    comment_content = commentService.getComment(a.getArticleId());
+
+                    for(Comment comment:comment_content){
+
+                        comment.setusername(userService.getUser(comment.getuserid()).getusername());
+                    }
+
                     a.setComment_content(comment_content);
 
                 }
@@ -191,9 +214,9 @@ public class ArticleController {
 
             if(isLiked){
 
-                likeService.deleteLike(articleId,user.getUserIdId());
+                likeService.deleteLike(articleId,user.getuserid());
             }else{
-                likeService.addLike(articleId,user.getUserIdId());
+                likeService.addLike(articleId,user.getuserid());
             }
         }catch ( Exception e){
 
@@ -219,9 +242,9 @@ public class ArticleController {
 
             if(isLiked){
 
-                collectService.deleteCollect(articleId,user.getUserIdId());
+                collectService.deleteCollect(articleId,user.getuserid());
             }else{
-                collectService.addCollect(articleId,user.getUserIdId());
+                collectService.addCollect(articleId,user.getuserid());
             }
         }catch ( Exception e){
 
@@ -239,11 +262,11 @@ public class ArticleController {
 //        //user信息（一个对象）)
 //        try{
 //            User user;
-//            int userId,articleId,commentId;
+//            int userid,articleId,commentId;
 //            String commentContent,commentDate;
 //
 //            user=(User)json.get("user");
-//            userId =user.getUserIdId();
+//            userid =user.getuserid();
 //            commentId=(int) json.get("comment_id");
 //            articleId = (int) json.get("article_id");
 //            commentContent= (String) json.get("comment_content");
@@ -262,7 +285,7 @@ public class ArticleController {
 
         try{
             System.out.println(comment);
-            comment.setUserId(comment.getUser().getUserIdId());
+            comment.setuserid(comment.getUser().getuserid());
            boolean re= commentService.addComment(comment);
 
            return re;

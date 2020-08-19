@@ -42,9 +42,9 @@ public class MavenWrapperDownloader {
             ".mvn/wrapper/maven-wrapper.jar";
 
     /**
-     * userName of the property which should be used to override the default download url for the wrapper.
+     * username of the property which should be used to override the default download url for the wrapper.
      */
-    private static final String PROPERTY_userName_WRAPPER_URL = "wrapperUrl";
+    private static final String PROPERTY_username_WRAPPER_URL = "wrapperUrl";
 
     public static void main(String args[]) {
         System.out.println("- Downloader started");
@@ -61,7 +61,7 @@ public class MavenWrapperDownloader {
                 mavenWrapperPropertyFileInputStream = new FileInputStream(mavenWrapperPropertyFile);
                 Properties mavenWrapperProperties = new Properties();
                 mavenWrapperProperties.load(mavenWrapperPropertyFileInputStream);
-                url = mavenWrapperProperties.getProperty(PROPERTY_userName_WRAPPER_URL, url);
+                url = mavenWrapperProperties.getProperty(PROPERTY_username_WRAPPER_URL, url);
             } catch (IOException e) {
                 System.out.println("- ERROR loading '" + MAVEN_WRAPPER_PROPERTIES_PATH + "'");
             } finally {
@@ -96,13 +96,13 @@ public class MavenWrapperDownloader {
     }
 
     private static void downloadFileFromURL(String urlString, File destination) throws Exception {
-        if (System.getenv("MVNW_USERuserName") != null && System.getenv("MVNW_userPassword") != null) {
-            String useruserName = System.getenv("MVNW_USERuserName");
+        if (System.getenv("MVNW_USERusername") != null && System.getenv("MVNW_userPassword") != null) {
+            String userusername = System.getenv("MVNW_USERusername");
             char[] userPassword = System.getenv("MVNW_userPassword").toCharArray();
             Authenticator.setDefault(new Authenticator() {
                 @Override
                 protected userPasswordAuthentication getuserPasswordAuthentication() {
-                    return new userPasswordAuthentication(useruserName, userPassword);
+                    return new userPasswordAuthentication(userusername, userPassword);
                 }
             });
         }

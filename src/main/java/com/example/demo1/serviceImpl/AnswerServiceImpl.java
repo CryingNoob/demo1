@@ -18,6 +18,10 @@ public class AnswerServiceImpl  implements AnswerService {
     public List<Answer> getAnswer(int questionId){
         return answerDao.getAnswer(questionId);
     }
+    public boolean addAnswer(Answer answer){
+
+        return answerDao.addAnswer(answer);
+    }
 
 
 }

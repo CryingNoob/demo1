@@ -16,8 +16,8 @@ public class TagServiceImpl  implements TagService {
         this.tagDao=tagDao;
     }
 
-    public Tag getTag(int id ){
-        return  tagDao.getTag( id);
+    public Tag getTag(int tagId ){
+        return  tagDao.getTag( tagId);
     }
 
 }

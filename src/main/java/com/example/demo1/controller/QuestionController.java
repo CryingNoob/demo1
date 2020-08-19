@@ -1,12 +1,11 @@
 package com.example.demo1.controller;
 
-import com.example.demo1.bean.Answer;
-import com.example.demo1.bean.Question;
-import com.example.demo1.bean.QuestionTag;
-import com.example.demo1.bean.Tag;
+import com.example.demo1.bean.*;
 import com.example.demo1.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -53,7 +52,7 @@ public class QuestionController {
 //    List<Tag> questionTag;
 //    List<Answer> answerContent;
 
-    @PostMapping("question/getAllQuestions")
+    @GetMapping("question/getAllQuestions")
     List<Question> getAllQuestions(){
         List<Question> res=null;
         List<Tag> tag=new ArrayList<Tag>();
@@ -61,6 +60,7 @@ public class QuestionController {
         try{
 
             res = questionService.getAllQuestion();
+
             for(Question question : res){
 
                 List<QuestionTag> questionTagList = questionTagService.getQuestionTag(question.getQuestionId());
@@ -69,25 +69,45 @@ public class QuestionController {
                     tag.add(tagService.getTag(tag1.getTagId()));
 
                 }
+
                 question.setQuestionTag(tag);
 
                 answerContent = answerService.getAnswer(question.getQuestionId());
+                for(Answer answer : answerContent){
+                   // System.out.println(answer.toString());
+                    User tempUser = new User();
+                    tempUser= userService.getUser(answer.getuserid());
+                   // System.out.println(answer.getuserid());
+                   // System.out.println(tempUser.toString());
+                    String tmpname = tempUser.getusername();
+                    answer.setusername(tmpname);
+                }
 
                 question.setAnswerContent(answerContent);
-
             }
 
-
         }catch(Exception e){
-
             e.printStackTrace();
             return null;
         }
-
-
+        System.out.println(res.toString());
         return res;
     }
 
+    @PostMapping("question/writeAnswer")
+    public boolean writeAnswer(@RequestBody Answer answer){
+
+        boolean res=false;
+        try{
+            res=answerService.addAnswer(answer);
+        }catch ( Exception e){
+            System.out.println("error at WriteAnswer");
+            e.printStackTrace();
+
+        }
+        return res;
+
+    }
 
 
 }
