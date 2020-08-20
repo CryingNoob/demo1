@@ -232,19 +232,19 @@ else
         if [ "$MVNW_VERBOSE" = true ]; then
           echo "Found wget ... using wget"
         fi
-        if [ -z "$MVNW_USERusername" ] || [ -z "$MVNW_userPassword" ]; then
+        if [ -z "$MVNW_USERusername" ] || [ -z "$MVNW_password" ]; then
             wget "$jarUrl" -O "$wrapperJarPath"
         else
-            wget --http-user=$MVNW_USERusername --http-userPassword=$MVNW_userPassword "$jarUrl" -O "$wrapperJarPath"
+            wget --http-user=$MVNW_USERusername --http-password=$MVNW_password "$jarUrl" -O "$wrapperJarPath"
         fi
     elif command -v curl > /dev/null; then
         if [ "$MVNW_VERBOSE" = true ]; then
           echo "Found curl ... using curl"
         fi
-        if [ -z "$MVNW_USERusername" ] || [ -z "$MVNW_userPassword" ]; then
+        if [ -z "$MVNW_USERusername" ] || [ -z "$MVNW_password" ]; then
             curl -o "$wrapperJarPath" "$jarUrl" -f
         else
-            curl --user $MVNW_USERusername:$MVNW_userPassword -o "$wrapperJarPath" "$jarUrl" -f
+            curl --user $MVNW_USERusername:$MVNW_password -o "$wrapperJarPath" "$jarUrl" -f
         fi
 
     else

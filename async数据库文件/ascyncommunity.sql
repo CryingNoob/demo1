@@ -188,7 +188,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
   `userid` int(0) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `userpassword` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`userid`) USING BTREE,
   UNIQUE INDEX `user_user_name_uindex`(`username`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;

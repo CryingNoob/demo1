@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @Controller
 public class UserController {
@@ -50,21 +54,76 @@ public class UserController {
     }
 
     //登录
+//@RespondBody
+//    @GetMapping("user/signin")
+//    public User loginGet(String name,String password){
+//        System.out.println("singin");
+//        User user=new User();
+//        user.setusername(name);
+//        user.setpassword(password);
+//        User reUser = null;
+//        try{
+//
+//           reUser= userService.login(user);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            System.out.println("登录 get error");
+//        }
+//     return reUser;
+//    }
+//    @ResponseBody
+//    @GetMapping("user/signin1")
+//    public User loginGet( Map<String,Object>json){
+//        System.out.println("json"+json);
+//        String name= JSON.parseObject(JSON.toJSONString(json.get("username")),String.class) ;
+//        String password= JSON.parseObject(JSON.toJSONString(json.get("password")),String.class) ;
+//
+//        User user=new User();
+//        user.setusername(name);
+//        user.setpassword(password);
+//        System.out.println(user);
+//        User reUser = null;
+//        try{
+//
+//            reUser= userService.login(user);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            System.out.println("登录 get error");
+//        }
+//        return reUser;
+//    }
 
-    @GetMapping("user/signin")
-    public User loginGet(String name,String password){
-        User user=new User();
-        user.setusername(name);
-        user.setUserpassword(password);
+//    @ResponseBody
+//    @GetMapping("user/signin1")
+//    public User loginGet(User user){
+//
+//
+//        System.out.println(user);
+//        User reUser = null;
+//        try{
+//
+//            reUser= userService.login(user);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            System.out.println("登录 get error");
+//        }
+//        return reUser;
+//    }
+    @ResponseBody
+    @PostMapping("user/signin")
+    public User loginPost(@RequestBody User user){
+
+
+        System.out.println("post"+user);
         User reUser = null;
         try{
 
-           reUser= userService.login(user);
+            reUser= userService.login(user);
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("登录 get error");
         }
-     return reUser;
+        return reUser;
     }
 
     //注册
@@ -75,7 +134,7 @@ public class UserController {
         User res1=new User();
         try{
             res.setusername(JSON.parseObject(JSON.toJSONString(json.get("username")),String.class));
-            res.setUserpassword(JSON.parseObject(JSON.toJSONString(json.get("userpassword")),String.class));
+            res.setpassword(JSON.parseObject(JSON.toJSONString(json.get("password")),String.class));
             System.out.println(res);
             userService.register(res);
             res1=userService.getUserByName(res.getusername());
@@ -86,6 +145,8 @@ public class UserController {
         return res1;
     }
 
+
+
     @ResponseBody
     @PostMapping("user/signup")
     public String add( @RequestBody User user) {
@@ -94,9 +155,9 @@ public class UserController {
         try {
             insertFlag = userService.register(user);
             System.out.println(insertFlag);
-            System.out.println("插入成功");
+            System.out.println("注册插入成功");
         } catch (Exception e){
-            System.out.println("插入错误");
+            System.out.println("注册插入错误");
             e.printStackTrace();
         }
         return "注册" + user.toString() + "  " + insertFlag;

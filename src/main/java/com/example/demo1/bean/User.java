@@ -2,17 +2,19 @@ package com.example.demo1.bean;
 
 import com.alibaba.fastjson.parser.Feature;
 
+import java.util.Random;
+
 public class User {
     private int userid;//8
     private String username;
-    private String userpassword;
+    private String password;
 
     @Override
     public String toString() {
         return "User{" +
                 "userid=" + userid +
                 ", username='" + username + '\'' +
-                ", userpassword='" + userpassword + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -32,11 +34,14 @@ public class User {
         this.username = username;
     }
 
-    public String getUserpassword() {
-        return userpassword;
+    public String getpassword() {
+        return password;
     }
 
-    public void setUserpassword(String userpassword) {
-        this.userpassword = userpassword;
+    public void setpassword(String password) {
+        this.password = password;
     }
+    //生成指定length的随机字符串（A-Z，a-z，0-9）
+
+
 }

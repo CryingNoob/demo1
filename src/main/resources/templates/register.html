@@ -11,7 +11,7 @@ hello , 注册
 <!--<form method="post" action="http://localhost:8080/post">-->
 
 用户名<input type="text" placeholder="aaa" username="username" value="aaa"> <br>
-mima<input type="userPassword" username="userPassword" value="bbb">
+mima<input type="password" username="password" value="bbb">
 <button onclick=sub1()> submit</button>
 <p class="xxx" id="aaa">xxxx</p>
 <script>
@@ -19,9 +19,9 @@ mima<input type="userPassword" username="userPassword" value="bbb">
         console.log("123");
         var user= {
                 'username':$("[username='username']").val(),
-                'userPassword':$("[username='userPassword']").val()
+                'password':$("[username='password']").val()
                 // 'username': 'xxx',
-                // 'userPassword': 'ppp'
+                // 'password': 'ppp'
             };
         console.log(user);
         $.ajax(
@@ -34,7 +34,7 @@ mima<input type="userPassword" username="userPassword" value="bbb">
                 contentType:"application/json",
                 success: function (data) {
                     console.log("data", data);
-                    $('#aaa').text("username : " + data.username+ "  userPassword:" +data.userPassword);
+                    $('#aaa').text("username : " + data.username+ "  password:" +data.password);
                 }
         });
     }

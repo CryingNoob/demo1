@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface QuestionTagService  {
     List<QuestionTag> getQuestionTag(int id);
+    boolean insertArticleTag(QuestionTag questionTag);
 }

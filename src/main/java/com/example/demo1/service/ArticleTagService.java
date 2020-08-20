@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ArticleTagService {
     List<ArticleTag> getArticleTag(int id);
+    boolean insertArticleTag(ArticleTag articleTag);
 }

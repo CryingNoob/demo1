@@ -20,4 +20,9 @@ public class ArticleTagServiceImpl implements ArticleTagService {
        return articleTagDao.getArticleTag(id);
     }
 
+    @Override
+    public boolean insertArticleTag(ArticleTag articleTag) {
+        return articleTagDao.insertArticleTag(articleTag);
+    }
+
 }

@@ -21,4 +21,9 @@ public class QuestionTagServiceImpl  implements QuestionTagService {
         return questionTagDao.getQuestionTag(id);
 
     }
+
+    @Override
+    public boolean insertArticleTag(QuestionTag questionTag) {
+        return questionTagDao.insertArticleTag(questionTag);
+    }
 }
